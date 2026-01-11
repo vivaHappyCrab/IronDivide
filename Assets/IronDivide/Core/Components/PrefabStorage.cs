@@ -6,5 +6,7 @@ namespace IronDivide.Core.Components
     public class PrefabStorage : IComponentData
     {
         public GameObject Train;
+
+        public GameObject Station;
     }
 }

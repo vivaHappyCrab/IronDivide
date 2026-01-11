@@ -7,6 +7,8 @@ namespace IronDivide.Authorings
     public class PrefabsAuthoring : MonoBehaviour
     {
         public GameObject Train;
+
+        public GameObject Station;
     }
 
     public class PrefabsAuthoringBaker : Baker<PrefabsAuthoring>
@@ -16,7 +18,8 @@ namespace IronDivide.Authorings
             var entity = GetEntity(TransformUsageFlags.None);
             AddComponentObject<PrefabStorage>(entity, new PrefabStorage
             {
-                Train = authoring.Train
+                Train = authoring.Train,
+                Station = authoring.Station,
             });
         }
     }

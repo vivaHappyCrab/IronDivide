@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IronDivide.Authorings.PrefabsAuthoring
   Train: {fileID: 7578344498158738979, guid: 16e5ee22838354a49bb0f3cdfc2c8010, type: 3}
+  Station: {fileID: 6237247179272021011, guid: ef717eced45130f4b864db9964763905, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
