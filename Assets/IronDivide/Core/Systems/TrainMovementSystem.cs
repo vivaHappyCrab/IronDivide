@@ -26,7 +26,6 @@ namespace IronDivide.Core.Systems
                     TrainElement element = buffer[i];
                     ref var train = ref SystemAPI.GetComponentRW<Train>(element.Train).ValueRW;
                     train.Position=new float2((float)Math.Cos(et),(float)Math.Sin(et));
-                    UnityEngine.Debug.Log($"{element.Train.ToFixedString()} setted new coords");
                 }
             }
         }

@@ -26,11 +26,10 @@ namespace IronDivide.Core.Systems
         {
             var worldState = SystemAPI.GetSingleton<WorldState>();
             var worldStateEntity = SystemAPI.GetSingletonEntity<WorldState>();
-            Debug.Log($"{worldStateEntity.ToFixedString()}");
+            UnityEngine.Debug.Log($"{worldStateEntity.ToFixedString()}");
             var grid = SystemAPI.GetSingleton<IronDivide.Core.Components.Grid>();
             var ecb = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>()
                              .CreateCommandBuffer(state.WorldUnmanaged);
-            //var buffer = state.EntityManager.GetBuffer<TrainElement>(trainsBufferEntity);
 
             var train = ecb.CreateEntity();
             var trainComponent = new Train
