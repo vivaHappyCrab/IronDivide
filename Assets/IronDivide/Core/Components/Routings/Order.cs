@@ -1,17 +1,18 @@
 using Unity.Collections;
 using Unity.Entities;
-using Unity.Mathematics;
 
 namespace IronDivide.Core.Components
 {
-    public struct Station : IComponentData
+    public struct Order : IComponentData
     {
         public ulong Id;
-        
+
         public FixedString128Bytes Name;
 
-        public float2 Position;
+        public OrderContent Content;
 
-        public int Capacity;
+        public Entity TargetStation;
+
+        public float Deadline;
     }
 }

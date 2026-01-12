@@ -12,12 +12,14 @@ namespace IronDivide.Core.Components
 
         public float2 Position;
 
-        public Entity Target;
+        public Entity Order;
 
         public float Speed;
 
         public float MaxSpeed;
 
         public float WaitTime;
+
+        public TrainState State;
     }
 }
