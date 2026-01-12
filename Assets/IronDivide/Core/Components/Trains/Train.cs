@@ -12,6 +12,8 @@ namespace IronDivide.Core.Components
 
         public float2 Position;
 
+        public quaternion Rotation;
+
         public Entity Order;
 
         public float Speed;

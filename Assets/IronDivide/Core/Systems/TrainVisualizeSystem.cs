@@ -30,12 +30,13 @@ namespace IronDivide.Core.Systems
                     TrainVisualObject = trainObject
                 });
                 trainObject.transform.position = new Vector3(train.Position.x, 0.5f, train.Position.y);
+                trainObject.transform.rotation = train.Rotation;
             }
 
             foreach ((var train, var visual) in SystemAPI.Query<Train,TrainVisual>())
             {
                 visual.TrainVisualObject.transform.position = new Vector3(train.Position.x, 0.5f, train.Position.y);
-                //visual.TrainVisualObject.transform.rotation = new Quaternion()
+                visual.TrainVisualObject.transform.rotation = train.Rotation;
             }
         }
 

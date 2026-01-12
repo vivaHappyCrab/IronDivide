@@ -88,6 +88,8 @@ namespace IronDivide.Core.Systems
                 {
                     var newPos = trackSpline.EvaluatePosition(trainOnTrack.Progress);
                     train.Position = new float2(newPos.x, newPos.z);
+                    var direction = trackSpline.EvaluateTangent(trainOnTrack.Progress);
+                    train.Rotation = quaternion.LookRotation(new float3(direction.x, 0, direction.z), math.up());
                     UnityEngine.Debug.Log($"New pos {train.Position.x}/{train.Position.y}");
                 }
                 //TODO:отправить на станцию

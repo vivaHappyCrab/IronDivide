@@ -127,7 +127,9 @@ namespace IronDivide.Core.Systems
         {
             var knotFrom = new BezierKnot(new float3(from.x, 0, from.y));
             var knotTo = new BezierKnot(new float3(to.x, 0, to.y));
-            var knotMiddle = new BezierKnot(new float3((from.x + to.x) / 2 + 3, 0, (from.y + to.y) / 2 + 4));
+            var midX=(from.x + to.x) / 2 + 3;
+            var midY=(from.y + to.y) / 2 + 4;
+            var knotMiddle = new BezierKnot(new float3(midX, 0, midY));
             using var nativeList = new NativeList<BezierKnot>(initialCapacity: 3, Allocator.Temp);
             nativeList.Add(knotFrom);
             nativeList.Add(knotMiddle);

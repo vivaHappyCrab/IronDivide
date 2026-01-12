@@ -24,17 +24,14 @@ namespace IronDivide.Core.Components
         /// </summary>
         public NativeSpline CreateNativeSpline(Allocator allocator)
         {
-
-            using var nativeList = new NativeList<BezierKnot>(initialCapacity: knots.Length, Allocator.Temp);
-
-            for (int i = 0; i < knots.Length; i++)
+            var spline = new Spline(knots.Length);
+                        for (int i = 0; i < knots.Length; i++)
             {
-                nativeList.Add(knots[i]);
+                spline.Add(knots[i]);
             }
+            spline.SetTangentMode(TangentMode.AutoSmooth);
 
-            var readonlyKnots = new KnotsReadonlyCollection(nativeList);
-
-            return new NativeSpline(readonlyKnots, closed, transformMatrix, allocator);
+            return new NativeSpline(spline, allocator);
         }
 
         public static BlobAssetReference<NativeSplineBlob> CreateNativeSplineBlobAssetRef
@@ -63,32 +60,6 @@ namespace IronDivide.Core.Components
             return nativeSplineBuilder
                     .CreateBlobAssetReference<NativeSplineBlob>(Allocator.Persistent);
         }
-    }
-
-    public readonly struct KnotsReadonlyCollection : IReadOnlyList<BezierKnot>
-    {
-        private readonly NativeList<BezierKnot> _knots;
-
-        public KnotsReadonlyCollection(NativeList<BezierKnot> knots)
-        {
-            _knots = knots;
-        }
-
-        public IEnumerator<BezierKnot> GetEnumerator()
-        {
-            for (int i = 0; i < _knots.Length; i++)
-            {
-                yield return _knots[i];
-            }
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
-        public BezierKnot this[int index] => _knots[index];
-        public int Count => _knots.Length;
     }
 
     [RequireComponent(typeof(SplineContainer))]
